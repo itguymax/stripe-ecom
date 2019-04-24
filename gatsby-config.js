@@ -3,27 +3,21 @@ require("dotenv").config({
 })
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Adeline store`,
+    description: `Shopify and Gatsby store.`,
+    author: `@itguymax`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-emotion`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
-      resolve: `gatsby-source-stripe`,
+      resolve: "gatsby-source-shopify",
       options: {
-        objects: ["Product", "Sku"],
-        secretKey: process.env.STRIPE_SECRET_KEY,
-        downloadFiles: true,
-        auth: false,
-      },
-    },
-    {
-      resolve: `gatsby-plugin-stripe`,
-      options: {
-        async: true,
+        shopName: "adelinestore",
+        accessToken: process.env.STOREFRONT_ACCESS_TOKEN,
+        verbose: true,
       },
     },
     {
